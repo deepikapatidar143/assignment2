@@ -19,5 +19,5 @@ int main()
              printf("%d is a odd number\n",num);
         }
     
-    
+    return 0;
     }

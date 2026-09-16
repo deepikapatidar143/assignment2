@@ -5,69 +5,46 @@ Title - Decision control instruction
 Problem no.- 17
 Date of submission - 16-09-2026*/
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-void convertBelowThousand(long long num) {
-    char *ones[] = {"", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", 
-                    "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
-    char *tens[] = {"", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"};
 
-    if (num >= 100) {
-        printf("%s hundred ", ones[num / 100]);
-        num %= 100;
-    }
+char *w[] = {"", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
+             "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen",
+             "", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"};
 
-    if (num >= 20) {
-        printf("%s ", tens[num / 10]);
-        if (num % 10 > 0) {
-            printf("%s ", ones[num % 10]);
-        }
-    } else if (num > 0) {
-        printf("%s ", ones[num]);
+void p(int n, char *s) {
+    if (!n) return;
+    if (n / 100) printf("%s hundred ", w[n / 100]);
+    int rem = n % 100;
+    if (rem) {
+        if (rem < 20) printf("%s ", w[rem]);
+        else printf("%s %s ", w[20 + rem / 10], w[rem % 10]);
     }
+    printf("%s ", s);
 }
 
-int main(int argc, char *argv[]) {
-    long long num;
+int main(int c, char **v) {
+    if (c < 2) return printf("Usage: %s <integer>\n", v[0]), 1;
 
-    if (argc >= 2) {
-        num = atoll(argv[1]);
-    } else {
-        if (scanf("%lld", &num) != 1) {
-            return 1;
-        }
+    long long n = 0;
+    int is_neg = 0;
+    char *str = v[1];
+
+    if (*str == '-') {
+        is_neg = 1;
+        str++;
     }
 
-    if (num < -999999999 || num > 999999999) {
-        return 1;
+    while (*str >= '0' && *str <= '9') {
+        n = n * 10 + (*str - '0');
+        str++;
     }
 
-    if (num == 0) {
-        printf("zero\n");
-        return 0;
-    }
-
-    if (num < 0) {
-        printf("negative ");
-        num = -num;
-    }
-
-    if (num >= 1000000) {
-        convertBelowThousand(num / 1000000);
-        printf("million ");
-        num %= 1000000;
-    }
-
-    if (num >= 1000) {
-        convertBelowThousand(num / 1000);
-        printf("thousand ");
-        num %= 1000;
-    }
-
-    if (num > 0) {
-        convertBelowThousand(num);
-    }
-
+    if (n == 0) return printf("zero\n"), 0;
+    if (is_neg) printf("negative ");
+    
+    p(n / 1000000, "million");
+    p((n % 1000000) / 1000, "thousand");
+    p(n % 1000, "");
+    
     printf("\n");
     return 0;
 }

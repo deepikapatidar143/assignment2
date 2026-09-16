@@ -26,9 +26,9 @@ int main(){
        num1 = num1/10; 
     }
     if(sum>1000)
-    printf("Sum of digits is greater than thousand");
+    printf("Multiplication of digits is greater than thousand");
     else
-    printf(" Sum of digits is not greater than thousand ");
+    printf("Multiplication of digits is not greater than thousand ");
     return 0;
 
 }
