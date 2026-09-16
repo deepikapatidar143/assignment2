@@ -1,0 +1,23 @@
+/*Name - Deepika Patidar
+Enrollment no. - csmt08
+Assignment no. - 2
+Title - Decision control instruction
+Problem no.- 3
+Date of submission - 16-09-2026*/
+#include <stdio.h>
+int main()
+    {
+        int num;
+        printf("Enter a number:");
+        scanf("%d",&num);
+        if(num%2==0)
+        {
+            printf("%d is a even number\n",num);
+        }
+        else
+        {
+             printf("%d is a odd number\n",num);
+        }
+    
+    
+    }
