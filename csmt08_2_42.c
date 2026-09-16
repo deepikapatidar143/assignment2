@@ -2,7 +2,7 @@
 Enrollment no. - csmt08
 Assignment no. - 2
 Title - Decision control instruction
-Problem no.- 22
+Problem no.- 42
 Date of submission - 16-09-2026*/
 #include <stdio.h>
 #include <math.h>

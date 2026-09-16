@@ -2,7 +2,7 @@
 Enrollment no. - csmt08
 Assignment no. - 2
 Title - Decision control instruction
-Problem no.- 24
+Problem no.- 44
 Date of submission - 16-09-2026*/
 #include <stdio.h>
 const float pie=3.14159;
